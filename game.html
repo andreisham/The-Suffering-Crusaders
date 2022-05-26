@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Страдающие крестоносцы</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Страдающие крестоносцы</h1>
+    <div class="saint_lend">
+        <p>Очки на святой земле</p>
+        <span id="total_score"></span>
+    </div>
+    <div class="players">
+        <div class="player">
+            <input type="text" class="input" name="player1" placeholder="имя игрока"> 
+            <span class="player_score" id="player1_score">0</span>
+            <form name="player1_score" onsubmit="countCrussaders(this);return false">
+                <input type="number" name="crusaders">
+                <label for="crusaders">Ушло в поход</label>
+                <button type="submit">Посчитать</button>
+            </form>
+        </div>
+        <div class="player">
+            <input type="text" class="input" name="player2" placeholder="имя игрока"> 
+            <span class="player_score" id="player2_score">0</span>
+            <form name="player2_score" onsubmit="countCrussaders(this);return false">
+                <input type="number" name="crusaders">
+                <label for="crusaders">Ушло в поход</label>
+                <button type="submit">Посчитать</button>
+            </form>
+        </div>
+        <div class="player">
+            <input type="text" class="input" name="player3" placeholder="имя игрока"> 
+            <span class="player_score" id="player3_score">0</span>
+            <form name="player3_score" onsubmit="countCrussaders(this);return false">
+                <input type="number" name="crusaders">
+                <label for="crusaders">Ушло в поход</label>
+                <button type="submit">Посчитать</button>
+            </form>
+        </div>
+        <div class="player">
+            <input type="text" class="input" name="player4" placeholder="имя игрока"> 
+            <span class="player_score" id="player4_score">0</span>
+            <form name="player4_score" onsubmit="countCrussaders(this);return false">
+                <input type="number" name="crusaders">
+                <label for="crusaders">Ушло в поход</label>
+                <button type="submit">Посчитать</button>
+            </form>
+        </div>
+        <div class="player">
+            <input type="text" class="input" name="player5" placeholder="имя игрока"> 
+            <span class="player_score" id="player5_score">0</span>
+            <form name="player5_score" onsubmit="countCrussaders(this);return false">
+                <input type="number" name="crusaders">
+                <label for="crusaders">Ушло в поход</label>
+                <button type="submit">Посчитать</button>
+            </form>
+        </div>
+        <div class="player">
+            <input type="text" class="input" name="player6" placeholder="имя игрока"> 
+            <span class="player_score" id="player6_score">0</span>
+            <form name="player6_score" onsubmit="countCrussaders(this);return false">
+                <input type="number" name="crusaders">
+                <label for="crusaders">Ушло в поход</label>
+                <button type="submit">Посчитать</button>
+            </form>
+        </div>  
+    </div>
+    <a href="/index.html">Назад</a>
+<script src="players.js"></script>
+</body>
+</html>
