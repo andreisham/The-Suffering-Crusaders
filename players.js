@@ -1,6 +1,9 @@
-
+// установка очков на святую землю
 let totalScore = document.getElementById('total_score');
 let score;
+
+document.addEventListener("DOMContentLoaded", ready);
+
 function ready() {
     let totalPlayers = localStorage.getItem('totalPlayers') 
     switch (totalPlayers) {
@@ -21,15 +24,13 @@ function ready() {
     showPlayers(totalPlayers);
 }
 
+// вывод нужного количества игроков
 function showPlayers(totalPlayers) {
     let players = document.querySelectorAll('.player')
     for (let i = 0; i < totalPlayers; i++) {
         players[i].style.display = 'block';
-        
     }
 }
-
-document.addEventListener("DOMContentLoaded", ready);
 
 // обработка очков
 function countCrussaders(form) {
@@ -39,6 +40,12 @@ function countCrussaders(form) {
             totalScore.innerHTML = totalScore.innerHTML - +form.crusaders.value
             let playerNewScore = +span.innerHTML + +form.crusaders.value;
             span.innerHTML = playerNewScore;
+            // выйгравший
+            if(totalScore.innerHTML <= 0) {
+                span.parentElement.classList.add('winner');
+                span.parentElement.insertAdjacentHTML("beforeend", `<img src='https://cdn.icon-icons.com/icons2/2699/PNG/512/atlassian_jira_logo_icon_170511.png'>`)
+                totalScore.innerHTML = score; 
+            }
         }
     });
 }

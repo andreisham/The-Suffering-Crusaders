@@ -1,3 +1,7 @@
 .player{
     display: none;
 }
+
+.winner {
+    background-color: red;
+}
