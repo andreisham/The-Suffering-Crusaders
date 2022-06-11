@@ -63,16 +63,22 @@ function getWinner() {
         let max = Object.entries(playerScores).sort(function(a,b){ 
             return +b[b.length-1] - a[a.length-1]
         })
+        winner = max[0]
+        console.log(winner)
+        console.log(winner[0])
+        //winner.id = 'winner'
        // let max = Object.entries(playerScores).reduce((acc, curr) => acc[1] >= curr[1] ? acc : curr)[0];
         console.log(max.slice(0, 2))
-        if(max[0] > max[1]) {
-            winner = max[0]
-        } else {
-            winner = max
-        }
+        // if(max[0] > max[1]) {
+        //     winner = max[0]
+        //     console.log(winner)
+        // } else {
+        //     winner = max
+        //     console.log(winner)
+        // }
          
 
-        document.getElementById(winner).parentElement.insertAdjacentHTML("beforeend", `<img src='https://cdn.icon-icons.com/icons2/2699/PNG/512/atlassian_jira_logo_icon_170511.png'>`)
+        document.getElementById(winner[0]).parentElement.insertAdjacentHTML("beforeend", `<img src='../img/crown.png'>`)
         totalScore.innerHTML = score; 
     } else {
         let notification = document.createElement('div');
