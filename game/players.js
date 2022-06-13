@@ -58,8 +58,6 @@ function countCrussaders(form) {
 function getWinner() {
     if(totalScore.innerHTML <= 0) {       
         let winner;
-
-        
         let max = Object.entries(playerScores).sort(function(a,b){ 
             return +b[b.length-1] - a[a.length-1]
         })
@@ -78,7 +76,9 @@ function getWinner() {
         // }
          
 
-        document.getElementById(winner[0]).parentElement.insertAdjacentHTML("beforeend", `<img src='../img/crown.png'>`)
+        document.getElementById(winner[0])
+            .parentElement.querySelector('.number')
+            .insertAdjacentHTML("beforeend", `<img style="width: 27px;margin: 14px 10px 0 0;" src="/img/king.png">`)
         totalScore.innerHTML = score; 
     } else {
         let notification = document.createElement('div');

@@ -3,20 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, user-scalable=yes">
+    <link rel="preload" href="fonts/HondaC.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="styles/normalize.css">
+    <link rel="stylesheet" href="styles/style.css">
     <title>Страдающие крестоносцы</title>
+    <script src="https://kit.fontawesome.com/ed5b6245e9.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <h1>Страдающие крестоносцы</h1>
-    <h2>Количество игроков</h2>
-    <select id="players" onchange="setPlayers(this.value)">
-        <option>3</option>
-        <option>4</option>
-        <option>5</option>
-        <option>6</option>
-    </select>
-    <a href="game/game.html" class="button">Начать!</a>
-    
+<div class="wrapper">
+    <header id="index-header">
+        <h1 class="header">Страдающие крестоносцы</h1>
+    </header>
+    <main class="main">
+        <h2 class="header2">Количество игроков</h2>
+        <div class="number">
+            <button class="number-minus" type="button" onclick="this.nextElementSibling.stepDown();"><span class="minus"></span></button>
+            <input class="number-players" type="number" id="players" min="3" max="6" value="3" readonly name="players">
+            <button class="number-plus" type="button" onclick="this.previousElementSibling.stepUp();"><span class="plus"></span></button>
+        </div>
+        <a href="game/game.html" class="button start-btn" onclick="check()">начать<br> крестовый поход</a>
+    </main>
+    <footer class="footer">
+        <div class="main_img"></div>
+    </footer>
+</div>
 <script src="scripts/script.js"></script>
 </body>
 </html>

@@ -5,96 +5,109 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Страдающие крестоносцы</title>
+    <link rel="preload" href="fonts/HondaC.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="../styles/normalize.css">
     <link rel="stylesheet" href="../styles/style.css">
+    <script src="https://kit.fontawesome.com/ed5b6245e9.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <h1>Страдающие крестоносцы</h1>
-    <div class="saint_lend">
-        <p>Очки на святой земле</p>
-        <span id="total_score"></span>
-    </div>
-    <div class="players">
-        <div class="player">
-            <input type="text" class="input" name="player1" placeholder="имя игрока"> 
-            <span class="player_score" id="player1_score">0</span>
-            <form name="player1_score" onsubmit="countCrussaders(this);return false">
-                <div class="number">
-                    <button class="number-minus" type="button" onclick="this.nextElementSibling.stepDown();">-</button>
-                    <input type="number" min="0" value="0" readonly name="crusaders">
-                    <button class="number-plus" type="button" onclick="this.previousElementSibling.stepUp();">+</button>
-                </div>
-                <label for="crusaders">Ушло в поход</label>
-                <button class="button" type="submit">Посчитать</button>
-            </form>
+<div class="wrapper">
+    <header>
+        <h1 class="game-header">Страдающие крестоносцы</h1>
+    </header>
+    <main class="main">
+        <div class="saint_lend">
+            <p>Очки на святой земле</p>
+            <span id="total_score"></span>
         </div>
-        <div class="player">
-            <input type="text" class="input" name="player2" placeholder="имя игрока"> 
-            <span class="player_score" id="player2_score">0</span>
-            <form name="player2_score" onsubmit="countCrussaders(this);return false">
-                <div class="number">
-                    <button class="number-minus" type="button" onclick="this.nextElementSibling.stepDown();">-</button>
-                    <input type="number" min="0" value="0" readonly name="crusaders">
-                    <button class="number-plus" type="button" onclick="this.previousElementSibling.stepUp();">+</button>
-                </div>
-                <label for="crusaders">Ушло в поход</label>
-                <button class="button" type="submit">Посчитать</button>
-            </form>
+        <div class="players">
+            <div class="player">
+                <input type="text" class="player-name" name="player1" placeholder="имя игрока">
+                <span class="player_score" id="player1_score">0</span>
+                <form name="player1_score" onsubmit="countCrussaders(this);return false">
+                    <div class="number">
+                        <button class="number-minus" type="button" onclick="this.nextElementSibling.stepDown();"><span class="minus"></span></button>
+                        <input class="number-crusaders" type="number" min="0" value="0" readonly name="crusaders">
+                        <button class="number-plus" type="button" onclick="this.previousElementSibling.stepUp();"><span class="plus"></span></button>
+                    </div>
+                    <span class="crusaders-to-send">Ушло в поход</span>
+                    <button class="button count-btn" type="submit">посчитать</button>
+                </form>
+            </div>
+            <div class="player">
+                <input type="text" class="player-name" name="player2" placeholder="имя игрока">
+                <span class="player_score" id="player2_score">0</span>
+                <form name="player2_score" onsubmit="countCrussaders(this);return false">
+                    <div class="number">
+                        <button class="number-minus" type="button" onclick="this.nextElementSibling.stepDown();"><span class="minus"></span></button>
+                        <input class="number-crusaders" type="number" min="0" value="0" readonly name="crusaders">
+                        <button class="number-plus" type="button" onclick="this.previousElementSibling.stepUp();"><span class="plus"></span></button>
+                    </div>
+                    <span class="crusaders-to-send">Ушло в поход</span>
+                    <button class="button count-btn" type="submit">посчитать</button>
+                </form>
+            </div>
+            <div class="player">
+                <input type="text" class="player-name" name="player3" placeholder="имя игрока">
+                <span class="player_score" id="player3_score">0</span>
+                <form name="player3_score" onsubmit="countCrussaders(this);return false">
+                    <div class="number">
+                        <button class="number-minus" type="button" onclick="this.nextElementSibling.stepDown();"><span class="minus"></span></button>
+                        <input class="number-crusaders" type="number" min="0" value="0" readonly name="crusaders">
+                        <button class="number-plus" type="button" onclick="this.previousElementSibling.stepUp();"><span class="plus"></span></button>
+                    </div>
+                    <span class="crusaders-to-send">Ушло в поход</span>
+                    <button class="button count-btn" type="submit">посчитать</button>
+                </form>
+            </div>
+            <div class="player">
+                <input type="text" class="player-name" name="player4" placeholder="имя игрока">
+                <span class="player_score" id="player4_score">0</span>
+                <form name="player4_score" onsubmit="countCrussaders(this);return false">
+                    <div class="number">
+                        <button class="number-minus" type="button" onclick="this.nextElementSibling.stepDown();"><span class="minus"></span></button>
+                        <input class="number-crusaders" type="number" min="0" value="0" readonly name="crusaders">
+                        <button class="number-plus" type="button" onclick="this.previousElementSibling.stepUp();"><span class="plus"></span></button>
+                    </div>
+                    <span class="crusaders-to-send">Ушло в поход</span>
+                    <button class="button count-btn" type="submit">посчитать</button>
+                </form>
+            </div>
+            <div class="player">
+                <input type="text" class="player-name" name="player5" placeholder="имя игрока">
+                <span class="player_score" id="player5_score">0</span>
+                <form name="player5_score" onsubmit="countCrussaders(this);return false">
+                    <div class="number">
+                        <button class="number-minus" type="button" onclick="this.nextElementSibling.stepDown();"><span class="minus"></span></button>
+                        <input class="number-crusaders" type="number" min="0" value="0" readonly name="crusaders">
+                        <button class="number-plus" type="button" onclick="this.previousElementSibling.stepUp();"><span class="plus"></span></button>
+                    </div>
+                    <span class="crusaders-to-send">Ушло в поход</span>
+                    <button class="button count-btn" type="submit">посчитать</button>
+                </form>
+            </div>
+            <div class="player">
+                <input type="text" class="player-name" name="player6" placeholder="имя игрока">
+                <span class="player_score" id="player6_score">0</span>
+                <form name="player6_score" onsubmit="countCrussaders(this);return false">
+                    <div class="number">
+                        <button class="number-minus" type="button" onclick="this.nextElementSibling.stepDown();"><span class="minus"></span></button>
+                        <input class="number-crusaders" type="number" min="0" value="0" readonly name="crusaders">
+                        <button class="number-plus" type="button" onclick="this.previousElementSibling.stepUp();"><span class="plus"></span></button>
+                    </div>
+                    <span class="crusaders-to-send">Ушло в поход</span>
+                    <button class="button count-btn" type="submit">посчитать</button>
+                </form>
+            </div>
         </div>
-        <div class="player">
-            <input type="text" class="input" name="player3" placeholder="имя игрока"> 
-            <span class="player_score" id="player3_score">0</span>
-            <form name="player3_score" onsubmit="countCrussaders(this);return false">
-                <div class="number">
-                    <button class="number-minus" type="button" onclick="this.nextElementSibling.stepDown();">-</button>
-                    <input type="number" min="0" value="0" readonly name="crusaders">
-                    <button class="number-plus" type="button" onclick="this.previousElementSibling.stepUp();">+</button>
-                </div>
-                <label for="crusaders">Ушло в поход</label>
-                <button class="button" type="submit">Посчитать</button>
-            </form>
-        </div>
-        <div class="player">
-            <input type="text" class="input" name="player4" placeholder="имя игрока"> 
-            <span class="player_score" id="player4_score">0</span>
-            <form name="player4_score" onsubmit="countCrussaders(this);return false">
-                <div class="number">
-                    <button class="number-minus" type="button" onclick="this.nextElementSibling.stepDown();">-</button>
-                    <input type="number" min="0" value="0" readonly name="crusaders">
-                    <button class="number-plus" type="button" onclick="this.previousElementSibling.stepUp();">+</button>
-                </div>
-                <label for="crusaders">Ушло в поход</label>
-                <button class="button" type="submit">Посчитать</button>
-            </form>
-        </div>
-        <div class="player">
-            <input type="text" class="input" name="player5" placeholder="имя игрока"> 
-            <span class="player_score" id="player5_score">0</span>
-            <form name="player5_score" onsubmit="countCrussaders(this);return false">
-                <div class="number">
-                    <button class="number-minus" type="button" onclick="this.nextElementSibling.stepDown();">-</button>
-                    <input type="number" min="0" value="0" readonly name="crusaders">
-                    <button class="number-plus" type="button" onclick="this.previousElementSibling.stepUp();">+</button>
-                </div>
-                <label for="crusaders">Ушло в поход</label>
-                <button class="button" type="submit">Посчитать</button>
-            </form>
-        </div>
-        <div class="player">
-            <input type="text" class="input" name="player6" placeholder="имя игрока"> 
-            <span class="player_score" id="player6_score">0</span>
-            <form name="player6_score" onsubmit="countCrussaders(this);return false">
-                <div class="number">
-                    <button class="number-minus" type="button" onclick="this.nextElementSibling.stepDown();">-</button>
-                    <input type="number" min="0" value="0" readonly name="crusaders">
-                    <button class="number-plus" type="button" onclick="this.previousElementSibling.stepUp();">+</button>
-                </div>
-                <label for="crusaders">Ушло в поход</label>
-                <button class="button" type="submit">Посчитать</button>
-            </form>
-        </div>  
-    </div>
-    <button class="button" id="winnerBtn" onclick="getWinner()">Дать реликвию!</button>
-    <a href="../index.html" class="button">Назад</a>
+    </main>
+    <footer class="footer">
+        <button class="button relic-btn" id="winnerBtn" onclick="getWinner()">Дать реликвию!</button>
+        <a href="../index.html" class="button">Назад</a>
+    </footer>
+
+</div>
+
 <script src="players.js"></script>
 </body>
 </html>

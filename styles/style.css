@@ -1,7 +1,205 @@
-.player{
-    display: none;
+@font-face {
+    font-family: 'HondaC';
+    src: url('../fonts/HondaC.woff2') format('woff2'),
+        url('../fonts/HondaC.woff') format('woff'),
+        url("../fonts/HondaC.ttf") format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+a{
+    outline: none;
+    text-decoration: none;
 }
 
-.winner {
-    background-color: red;
+body,html {
+    height: 100%;
+    font-family: 'HondaC', sans-serif;
+    background-image: url('../img/bg.png');
+    background-attachment: fixed;
+    background-size: contain;
+}
+
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100%;
+}
+#index-header{
+    background: linear-gradient(180deg, rgba(255, 206, 79, 0.45) 0%, rgba(217, 217, 217, 0) 100%);
+}
+.header{
+    margin: 18px 0;
+    font-size: 64px;
+    line-height: 58px;
+    background: linear-gradient(180deg, #800000 53.6%, #000000 146.75%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    text-align: center;
+    font-weight: 400;
+}
+
+.header2 {
+    margin-top: 5px;
+    font-size: 30px;
+    line-height: 90%;
+    text-align: center;
+    color: #680101;
+    font-weight: 400;
+}
+
+.main_img{
+    width: 374px;
+    height: 370px;
+    background-image: url("../img/crusaders.png");
+    background-size: cover;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1 1 auto;
+}
+
+.number {
+    display: flex;
+    align-items: center;
+}
+.number-minus, .number-plus, .number-players{
+    width: 22px;
+    height: 22px;
+    margin: 18px 16px 0 16px;
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid #680101;
+    box-shadow: 0px 4px 14px rgba(123, 92, 12, 0.3);
+    border-radius: 50%;
+
+    position:relative;
+    display:inline-block;
+    vertical-align:middle;
+}
+.plus:before,
+.plus:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:#000000;
+}
+.plus:before{
+    width: 2px;
+    margin: 3px auto;
+}
+.plus:after{
+    margin: auto 3px;
+    height: 2px;
+}
+.minus:before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:#000000;
+    margin: auto 5px;
+    height: 2px;
+}
+
+.number-players{
+    text-align: center;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    margin: 18px 0 0 0;
+    width: 40px;
+    height: 40px;
+}
+
+.number-crusaders{
+    text-align: center;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    margin: 18px 0 0 0;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid #680101;
+    box-shadow: 0px 4px 14px rgba(123, 92, 12, 0.3);
+}
+.button{
+    background: rgba(255, 255, 255, 0.6);
+    box-shadow: 0px 4px 14px rgba(123, 92, 12, 0.42);
+    border-radius: 32px;
+}
+
+.start-btn{
+    padding: 11px 54px 11px 54px;
+    font-size: 20px;
+    line-height: 90%;
+    text-align: center;
+    color: #680101;
+    margin-top: 17px;
+}
+.count-btn{
+    background: #680101;
+    border: 1px solid #FDFDF5;
+    box-shadow: 0px 4px 14px rgba(123, 92, 12, 0.3);
+    border-radius: 20px;
+    padding: 13px 41px;
+    color: #FFFFFF;
+    font-size: 20px;
+    line-height: 18px;
+    margin-top: 15px;
+}
+.relic-btn{
+    background: linear-gradient(270deg, #5C3C26 0.96%, #EDB160 16.46%, #A78C6E 33.61%, #E6B570 62.39%, #694A32 102.78%);
+    border: 1px solid #FDFDF5;
+    box-shadow: 0px 4px 14px rgba(123, 92, 12, 0.3);
+    border-radius: 20px;
+    padding: 11px 94px;
+    color: #FFFFFF;
+    font-size: 20px;
+}
+.footer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.player{
+    display: none;
+    margin-bottom: 25px;
+}
+.player-name{
+    padding-left: 10px;
+    width: 225px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid #680101;
+    box-shadow: 0px 4px 14px rgba(123, 92, 12, 0.3);
+    font-size: 20px;
+    color: #000000;
+}
+.player_score{
+    font-size: 30px;
+    line-height: 27px;
+    vertical-align: sub;
+}
+.crusaders-to-send{
+    font-size: 20px;
+    line-height: 18px;
 }
