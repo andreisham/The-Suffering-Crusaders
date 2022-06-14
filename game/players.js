@@ -46,6 +46,10 @@ function countCrussaders(form) {
     playerScore.forEach(span => {
         if(span.id == form.name) {
             totalScore.innerHTML = totalScore.innerHTML - +form.crusaders.value
+            // обнуление очков святой земли при уходе в минуса
+            if (totalScore.innerHTML <= 0) {
+                totalScore.innerHTML = 0;
+            }
             let playerNewScore = +span.innerHTML + +form.crusaders.value;
             playerScores[span.id] = playerNewScore;
             span.innerHTML = playerNewScore;
@@ -53,10 +57,11 @@ function countCrussaders(form) {
         }
     });
 }
-
+    
 //раздача реликвий
 function getWinner() {
-    if(totalScore.innerHTML <= 0) {       
+    if(totalScore.innerHTML <= 0) {  
+            
         let winner;
         let max = Object.entries(playerScores).sort(function(a,b){ 
             return +b[b.length-1] - a[a.length-1]
@@ -81,10 +86,15 @@ function getWinner() {
             .insertAdjacentHTML("beforeend", `<img style="width: 27px;margin: 14px 10px 0 0;" src="/img/king.png">`)
         totalScore.innerHTML = score; 
     } else {
-        let notification = document.createElement('div');
-        notification.className = "notification";
-        notification.innerHTML = 'Не дам! Святая земля еще не покорена!';
-        document.getElementById('winnerBtn').parentElement.append(notification);
-        setTimeout(() => notification.remove(), 2500);
+        // вылезающий монах
+        let notification = document.querySelector('.notification');
+        notification.classList.toggle('notification-active');
+
+        // let notification = document.createElement('div');
+        // notification.className = "notification";
+        // notification.innerHTML = '<p class="notification-text">Не дам! Святая<br>земля еще не<br>покорена</p>';
+        // document.getElementById('winnerBtn').parentElement.append(notification);
+        // setTimeout(() => notification.remove(), 2500);
+        setTimeout(() => notification.classList.toggle('notification-active'), 2500);
     }
 }

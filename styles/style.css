@@ -55,7 +55,20 @@ body,html {
     color: #680101;
     font-weight: 400;
 }
-
+.game-header{
+    font-size: 28px;
+    margin: 10px 0;
+    line-height: 25px;
+}
+.saint_lend{
+    text-align: center;
+    background: linear-gradient(180deg, #800000 53.6%, #000000 146.75%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    margin-bottom: 13px;
+}
 .main_img{
     width: 374px;
     height: 370px;
@@ -158,22 +171,33 @@ body,html {
 .count-btn{
     background: #680101;
     border: 1px solid #FDFDF5;
-    box-shadow: 0px 4px 14px rgba(123, 92, 12, 0.3);
     border-radius: 20px;
     padding: 13px 41px;
     color: #FFFFFF;
     font-size: 20px;
     line-height: 18px;
     margin-top: 15px;
+    margin-left: 35px;
 }
 .relic-btn{
     background: linear-gradient(270deg, #5C3C26 0.96%, #EDB160 16.46%, #A78C6E 33.61%, #E6B570 62.39%, #694A32 102.78%);
     border: 1px solid #FDFDF5;
-    box-shadow: 0px 4px 14px rgba(123, 92, 12, 0.3);
     border-radius: 20px;
     padding: 11px 94px;
     color: #FFFFFF;
     font-size: 20px;
+}
+.back-btn{
+    width: 125px;
+    height: 31px;
+    background: #680101;
+    border: 1px solid #FDFDF5;
+    border-radius: 20px;
+    font-size: 20px;
+    text-align: center;
+    color: #FFFFFF;
+    margin-top: 10px;
+    margin-bottom: 18px;
 }
 .footer{
     display: flex;
@@ -203,3 +227,56 @@ body,html {
     font-size: 20px;
     line-height: 18px;
 }
+/* .slide-in-bottom {
+	display: block;
+    -webkit-animation: slide-in-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	        animation: slide-in-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+} */
+.notification{
+    
+    position: fixed;
+    bottom: -185px;
+    /* bottom: 0; */
+    transition: bottom .3s linear;
+    z-index: 9999;
+    
+}
+.notification-active{
+    bottom: 0px;
+}
+.notification-text{
+    position: absolute;
+
+    font-size: 11px;
+    text-align: center;
+    color: #800000;
+    left: 118px;
+    bottom: 125px;
+}
+
+
+ @-webkit-keyframes slide-in-bottom {
+    0% {
+      -webkit-transform: translateY(1000px);
+              transform: translateY(1000px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateY(0);
+              transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  @keyframes slide-in-bottom {
+    0% {
+      -webkit-transform: translateY(1000px);
+              transform: translateY(1000px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateY(0);
+              transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  

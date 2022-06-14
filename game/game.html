@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
     <title>Страдающие крестоносцы</title>
     <link rel="preload" href="fonts/HondaC.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="../styles/normalize.css">
@@ -13,12 +13,13 @@
 <body>
 <div class="wrapper">
     <header>
-        <h1 class="game-header">Страдающие крестоносцы</h1>
+        <h1 class="header game-header">Страдающие крестоносцы</h1>
     </header>
     <main class="main">
         <div class="saint_lend">
-            <p>Очки на святой земле</p>
-            <span id="total_score"></span>
+            <span>Очки на святой земле</span>
+            <!-- <input id="total_score" type="number" min="0" readonly onchange="setToNull(this)"> -->
+            <span id="total_score" ></span>
         </div>
         <div class="players">
             <div class="player">
@@ -102,12 +103,17 @@
         </div>
     </main>
     <footer class="footer">
+
+        
         <button class="button relic-btn" id="winnerBtn" onclick="getWinner()">Дать реликвию!</button>
-        <a href="../index.html" class="button">Назад</a>
+        <a href="../index.html" class="button back-btn">назад</a>
     </footer>
-
+    
 </div>
-
+<div class="notification ">
+    <img src="../img/monah.png">
+    <p class="notification-text">Не дам! Святая<br>земля еще не<br>покорена</p>
+</div>
 <script src="players.js"></script>
 </body>
 </html>
