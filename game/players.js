@@ -1,4 +1,4 @@
-// запрет зума на iOS
+// запрет зума на iOS (не пашет)
 document.addEventListener('touchmove', function (event) {
     if (event.scale !== 1) { event.preventDefault(); }
 }, false);

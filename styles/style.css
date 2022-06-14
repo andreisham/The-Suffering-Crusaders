@@ -88,8 +88,8 @@ body,html {
     align-items: center;
 }
 .number-minus, .number-plus, .number-players{
-    width: 22px;
-    height: 22px;
+    width: 30px;
+    height: 30px;
     margin: 18px 16px 0 16px;
     background: rgba(255, 255, 255, 0.9);
     border: 1px solid #680101;
@@ -112,10 +112,10 @@ body,html {
 }
 .plus:before{
     width: 2px;
-    margin: 3px auto;
+    margin: 5px auto;
 }
 .plus:after{
-    margin: auto 3px;
+    margin: auto 5px;
     height: 2px;
 }
 .minus:before{
@@ -126,7 +126,7 @@ body,html {
     right: 0;
     bottom: 0;
     background:#000000;
-    margin: auto 5px;
+    margin: auto 7px;
     height: 2px;
 }
 
@@ -136,8 +136,8 @@ body,html {
     font-weight: 400;
     font-size: 30px;
     margin: 18px 0 0 0;
-    width: 40px;
-    height: 40px;
+    width: 45px;
+    height: 45px;
 }
 
 .number-crusaders{
@@ -225,56 +225,23 @@ body,html {
     font-size: 20px;
     line-height: 18px;
 }
-/* .slide-in-bottom {
-	display: block;
-    -webkit-animation: slide-in-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-	        animation: slide-in-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-} */
+
 .notification{
-    
     position: fixed;
     bottom: -185px;
-    /* bottom: 0; */
     transition: bottom .3s linear;
     z-index: 9999;
     
 }
 .notification-active{
-    bottom: 0px;
+    bottom: -10px;
 }
 .notification-text{
     position: absolute;
-
     font-size: 11px;
     text-align: center;
     color: #800000;
     left: 118px;
     bottom: 125px;
 }
-
-
- @-webkit-keyframes slide-in-bottom {
-    0% {
-      -webkit-transform: translateY(1000px);
-              transform: translateY(1000px);
-      opacity: 0;
-    }
-    100% {
-      -webkit-transform: translateY(0);
-              transform: translateY(0);
-      opacity: 1;
-    }
-  }
-  @keyframes slide-in-bottom {
-    0% {
-      -webkit-transform: translateY(1000px);
-              transform: translateY(1000px);
-      opacity: 0;
-    }
-    100% {
-      -webkit-transform: translateY(0);
-              transform: translateY(0);
-      opacity: 1;
-    }
-  }
   
