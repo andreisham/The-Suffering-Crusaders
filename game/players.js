@@ -83,7 +83,7 @@ function getWinner() {
 
         document.getElementById(winner[0])
             .parentElement.querySelector('.number')
-            .insertAdjacentHTML("beforeend", `<img style="width: 27px;margin: 14px 10px 0 0;" src="/img/king.png">`)
+            .insertAdjacentHTML("beforeend", `<img style="width: 27px;margin: 14px 10px 0 0;" src="../img/king.png">`)
         totalScore.innerHTML = score; 
     } else {
         // вылезающий монах
