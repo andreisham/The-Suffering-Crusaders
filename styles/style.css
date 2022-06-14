@@ -30,6 +30,13 @@ body,html {
     flex-direction: column;
     align-items: center;
     min-height: 100%;
+    background-image: url("../img/crusaders.png");
+    background-position: bottom;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.no-img{
+    background: none;
 }
 #index-header{
     background: linear-gradient(180deg, rgba(255, 206, 79, 0.45) 0%, rgba(217, 217, 217, 0) 100%);
@@ -69,15 +76,6 @@ body,html {
     text-fill-color: transparent;
     margin-bottom: 13px;
 }
-.main_img{
-    width: 374px;
-    height: 370px;
-    background-image: url("../img/crusaders.png");
-    background-size: cover;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-}
 .main {
     display: flex;
     flex-direction: column;
@@ -93,7 +91,7 @@ body,html {
     width: 22px;
     height: 22px;
     margin: 18px 16px 0 16px;
-    background: rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.9);
     border: 1px solid #680101;
     box-shadow: 0px 4px 14px rgba(123, 92, 12, 0.3);
     border-radius: 50%;
@@ -155,7 +153,7 @@ body,html {
     box-shadow: 0px 4px 14px rgba(123, 92, 12, 0.3);
 }
 .button{
-    background: rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.9);
     box-shadow: 0px 4px 14px rgba(123, 92, 12, 0.42);
     border-radius: 32px;
 }

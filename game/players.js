@@ -1,11 +1,8 @@
 // запрет зума на iOS
-document.addEventListener('touchmove', function(event) {
-    event = event.originalEvent || event;
-    if(event.scale !== 1) {
-      event.preventDefault();
-    } 
+document.addEventListener('touchmove', function (event) {
+    if (event.scale !== 1) { event.preventDefault(); }
 }, false);
-  
+
 // установка очков на святую землю
 let totalScore = document.getElementById('total_score');
 let score;
