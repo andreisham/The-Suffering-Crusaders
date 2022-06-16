@@ -18,17 +18,16 @@
     <main class="main">
         <div class="saint_lend">
             <span>Очки на святой земле</span>
-            <!-- <input id="total_score" type="number" min="0" readonly onchange="setToNull(this)"> -->
             <span id="total_score" ></span>
         </div>
         <div class="players">
             <div class="player">
-                <input type="text" class="player-name" name="player1" placeholder="имя игрока">
+                <input type="text" class="player-name" name="player1" placeholder="имя игрока" onchange="rememberPlayers(this)">
                 <span class="player_score" id="player1_score">0</span>
                 <form name="player1_score" onsubmit="countCrussaders(this);return false">
                     <div class="number">
                         <button class="number-minus" type="button" onclick="this.nextElementSibling.stepDown();"><span class="minus"></span></button>
-                        <input class="number-crusaders" type="number" min="0" value="0" readonly name="crusaders">
+                        <input class="number-crusaders" type="number" value="0" readonly name="crusaders">
                         <button class="number-plus" type="button" onclick="this.previousElementSibling.stepUp();"><span class="plus"></span></button>
                     </div>
                     <span class="crusaders-to-send">Ушло в поход</span>
@@ -36,12 +35,12 @@
                 </form>
             </div>
             <div class="player">
-                <input type="text" class="player-name" name="player2" placeholder="имя игрока">
+                <input type="text" class="player-name" name="player2" placeholder="имя игрока" onchange="rememberPlayers(this)">
                 <span class="player_score" id="player2_score">0</span>
                 <form name="player2_score" onsubmit="countCrussaders(this);return false">
                     <div class="number">
                         <button class="number-minus" type="button" onclick="this.nextElementSibling.stepDown();"><span class="minus"></span></button>
-                        <input class="number-crusaders" type="number" min="0" value="0" readonly name="crusaders">
+                        <input class="number-crusaders" type="number" value="0" readonly name="crusaders">
                         <button class="number-plus" type="button" onclick="this.previousElementSibling.stepUp();"><span class="plus"></span></button>
                     </div>
                     <span class="crusaders-to-send">Ушло в поход</span>
@@ -49,12 +48,12 @@
                 </form>
             </div>
             <div class="player">
-                <input type="text" class="player-name" name="player3" placeholder="имя игрока">
+                <input type="text" class="player-name" name="player3" placeholder="имя игрока" onchange="rememberPlayers(this)">
                 <span class="player_score" id="player3_score">0</span>
                 <form name="player3_score" onsubmit="countCrussaders(this);return false">
                     <div class="number">
                         <button class="number-minus" type="button" onclick="this.nextElementSibling.stepDown();"><span class="minus"></span></button>
-                        <input class="number-crusaders" type="number" min="0" value="0" readonly name="crusaders">
+                        <input class="number-crusaders" type="number" value="0" readonly name="crusaders">
                         <button class="number-plus" type="button" onclick="this.previousElementSibling.stepUp();"><span class="plus"></span></button>
                     </div>
                     <span class="crusaders-to-send">Ушло в поход</span>
@@ -62,12 +61,12 @@
                 </form>
             </div>
             <div class="player">
-                <input type="text" class="player-name" name="player4" placeholder="имя игрока">
+                <input type="text" class="player-name" name="player4" placeholder="имя игрока" onchange="rememberPlayers(this)">
                 <span class="player_score" id="player4_score">0</span>
                 <form name="player4_score" onsubmit="countCrussaders(this);return false">
                     <div class="number">
                         <button class="number-minus" type="button" onclick="this.nextElementSibling.stepDown();"><span class="minus"></span></button>
-                        <input class="number-crusaders" type="number" min="0" value="0" readonly name="crusaders">
+                        <input class="number-crusaders" type="number" value="0" readonly name="crusaders">
                         <button class="number-plus" type="button" onclick="this.previousElementSibling.stepUp();"><span class="plus"></span></button>
                     </div>
                     <span class="crusaders-to-send">Ушло в поход</span>
@@ -75,12 +74,12 @@
                 </form>
             </div>
             <div class="player">
-                <input type="text" class="player-name" name="player5" placeholder="имя игрока">
+                <input type="text" class="player-name" name="player5" placeholder="имя игрока" onchange="rememberPlayers(this)">
                 <span class="player_score" id="player5_score">0</span>
                 <form name="player5_score" onsubmit="countCrussaders(this);return false">
                     <div class="number">
                         <button class="number-minus" type="button" onclick="this.nextElementSibling.stepDown();"><span class="minus"></span></button>
-                        <input class="number-crusaders" type="number" min="0" value="0" readonly name="crusaders">
+                        <input class="number-crusaders" type="number" value="0" readonly name="crusaders">
                         <button class="number-plus" type="button" onclick="this.previousElementSibling.stepUp();"><span class="plus"></span></button>
                     </div>
                     <span class="crusaders-to-send">Ушло в поход</span>
@@ -88,12 +87,12 @@
                 </form>
             </div>
             <div class="player">
-                <input type="text" class="player-name" name="player6" placeholder="имя игрока">
+                <input type="text" class="player-name" name="player6" placeholder="имя игрока" onchange="rememberPlayers(this)">
                 <span class="player_score" id="player6_score">0</span>
                 <form name="player6_score" onsubmit="countCrussaders(this);return false">
                     <div class="number">
                         <button class="number-minus" type="button" onclick="this.nextElementSibling.stepDown();"><span class="minus"></span></button>
-                        <input class="number-crusaders" type="number" min="0" value="0" readonly name="crusaders">
+                        <input class="number-crusaders" type="number" value="0" readonly name="crusaders">
                         <button class="number-plus" type="button" onclick="this.previousElementSibling.stepUp();"><span class="plus"></span></button>
                     </div>
                     <span class="crusaders-to-send">Ушло в поход</span>
@@ -108,12 +107,19 @@
         <button class="button relic-btn" id="winnerBtn" onclick="getWinner()">Дать реликвию!</button>
         <a href="../index.html" class="button back-btn">назад</a>
     </footer>
-    
 </div>
+<!-- вылезающий монах -->
 <div class="notification ">
     <img src="../img/monah.png">
     <p class="notification-text">Не дам! Святая<br>земля еще не<br>покорена</p>
 </div>
+<!-- Модальное окно -->
+<div id="myModal_for_two" class="modal">
+    <div class="modal-content modal-content_for_two">
+      <p class="modal-text">выберите игрока для получения реликвии</p>
+    </div>
+</div>
+<script src="../scripts/script.js"></script>
 <script src="players.js"></script>
 </body>
 </html>

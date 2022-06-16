@@ -7,6 +7,12 @@ document.addEventListener('touchmove', function (event) {
 let totalScore = document.getElementById('total_score');
 let score;
 
+// модальное окно
+let modal = document.getElementById("myModal_for_two");
+let modalContent = document.querySelector(".modal-content_for_two");
+
+let playerScore = document.querySelectorAll('.player_score')
+
 document.addEventListener("DOMContentLoaded", ready);
 
 function ready() {
@@ -45,61 +51,146 @@ let playerScores = {
     player5_score: 0,
     player6_score: 0
 }
+
+// запоминание имен игроков
+function rememberPlayers(player) {
+    localStorage.setItem(player.name, player.value)
+}
+
 // обработка очков
 function countCrussaders(form) {
-    let playerScore = document.querySelectorAll('.player_score')
+    let playerNewScore;
     playerScore.forEach(span => {
         if(span.id == form.name) {
-            totalScore.innerHTML = totalScore.innerHTML - +form.crusaders.value
+            if(form.crusaders.value > 0){
+                totalScore.innerHTML = Number(totalScore.innerHTML) - +form.crusaders.value
+                playerNewScore = +span.innerHTML + +form.crusaders.value;
+                playerScores[span.id] = playerNewScore;
+                span.innerHTML = playerNewScore;
+                form.crusaders.value = 0;
+            } else {
+                totalScore.innerHTML = Number(totalScore.innerHTML) + Math.abs(form.crusaders.value)
+                playerNewScore = +span.innerHTML + +form.crusaders.value;
+                if (playerNewScore <= 0) {
+                    playerScores[span.id] = 0;
+                    span.innerHTML = 0;
+                } else {
+                    playerScores[span.id] = playerNewScore;
+                    span.innerHTML = playerNewScore;
+                }
+                form.crusaders.value = 0;
+            }
             // обнуление очков святой земли при уходе в минуса
             if (totalScore.innerHTML <= 0) {
                 totalScore.innerHTML = 0;
+            } else if (totalScore.innerHTML > score){
+                totalScore.innerHTML = score;
             }
-            let playerNewScore = +span.innerHTML + +form.crusaders.value;
-            playerScores[span.id] = playerNewScore;
-            span.innerHTML = playerNewScore;
-            form.crusaders.value = 0;
+            
         }
     });
 }
-    
-//раздача реликвий
+
+//определение победителя
 function getWinner() {
     if(totalScore.innerHTML <= 0) {  
-            
         let winner;
         let max = Object.entries(playerScores).sort(function(a,b){ 
             return +b[b.length-1] - a[a.length-1]
         })
-        winner = max[0]
-        console.log(winner)
-        console.log(winner[0])
-        //winner.id = 'winner'
-       // let max = Object.entries(playerScores).reduce((acc, curr) => acc[1] >= curr[1] ? acc : curr)[0];
-        console.log(max.slice(0, 2))
-        // if(max[0] > max[1]) {
-        //     winner = max[0]
-        //     console.log(winner)
-        // } else {
-        //     winner = max
-        //     console.log(winner)
-        // }
-         
-
-        document.getElementById(winner[0])
-            .parentElement.querySelector('.number')
-            .insertAdjacentHTML("beforeend", `<img style="width: 27px;margin: 14px 10px 0 0;" src="king.png">`)
-        totalScore.innerHTML = score; 
+        // Один победитель
+        if(max[0][1] > max[1][1]) {
+            winner = max[0][0].substring(0,7)
+            getRelic(winner)
+        // разрешение спора (два победителя)
+        } else if (max[0][1] === max[1][1] && max[1][1] > max[2][1]) {
+            let winnerOneName = localStorage.getItem(max[0][0].substring(0,7))
+            let winnerTwoName = localStorage.getItem(max[1][0].substring(0,7))
+            let winners = [winnerOneName, winnerTwoName]
+            // запуск модалки
+            showModal(winners)
+        // разрешение спора (больше двух победителей)
+        } else {
+            let winners = []
+            for (let i = 0; i < max.length; i++) {
+                if(localStorage.getItem(max[i][0].substring(0,7)) != null) {
+                    winners.push(localStorage.getItem(max[i][0].substring(0,7))); 
+                }
+            }
+            // запуск модалки
+            showModal(winners)
+        } 
     } else {
         // вылезающий монах
         let notification = document.querySelector('.notification');
         notification.classList.toggle('notification-active');
-
-        // let notification = document.createElement('div');
-        // notification.className = "notification";
-        // notification.innerHTML = '<p class="notification-text">Не дам! Святая<br>земля еще не<br>покорена</p>';
-        // document.getElementById('winnerBtn').parentElement.append(notification);
-        // setTimeout(() => notification.remove(), 2500);
         setTimeout(() => notification.classList.toggle('notification-active'), 2500);
     }
+}
+// раздача реликвий
+function getRelic(winner) {
+    winner = winner + '_score'
+    document.getElementById(winner)
+        .parentElement.querySelector('.number')
+        .insertAdjacentHTML("beforeend", `<img style="width: 27px;margin: 14px 10px 0 0;" src="king.png">`);
+    restartGame();
+}
+
+// обнуление очков
+function restartGame(){
+    totalScore.innerHTML = score;
+    playerScores = {
+        player1_score: 0,
+        player2_score: 0,
+        player3_score: 0,
+        player4_score: 0,
+        player5_score: 0,
+        player6_score: 0
+    }
+    playerScore.forEach(span => {
+        span.innerHTML = 0
+    });
+}
+
+// открытие модалки
+function showModal(winners) {
+    modal.style.display = "block";
+    if(winners.length == 2) {
+        modalContent.insertAdjacentHTML('afterbegin', `<p id='${winners[0]}' class="winner-choice">${winners[0]}</p> `);
+        document.getElementById(winners[0]).addEventListener('click', function(){setWinner(winners[0])})
+        modalContent.insertAdjacentHTML('beforeend', `<p id='${winners[1]}' class="winner-choice">${winners[1]}</p> `);
+        document.getElementById(winners[1]).addEventListener('click', function(){setWinner(winners[1])})
+    } else {
+        winners.forEach(winner => {
+            modalContent.insertAdjacentHTML('beforeend', `<p id='${winner}' class="winner-choice">${winner}</p> `);
+            document.getElementById(winner).addEventListener('click', function(){setWinner(winner)}) 
+        });
+    }
+}
+
+// Когда пользователь щелкает в любом месте за пределами модалки, оно закроется
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+    removeWinners()
+  }
+}
+// отчистка модального окна
+function removeWinners() {
+    let winnersForRemove = document.querySelectorAll('.winner-choice')
+    winnersForRemove.forEach(winnerForRemove => {
+        modalContent.removeChild(winnerForRemove)
+    });
+}
+// выбор кому дать реликвию (при спорной ситуации)
+function setWinner(winner) {
+    console.log(winner)
+    for( let i = 0; i < localStorage.length; i++) { 
+        if (winner == localStorage.getItem(localStorage.key(i))) {
+            winner = localStorage.key(i)
+        }
+    }
+    getRelic(winner)
+    removeWinners()
+    modal.style.display = "none";
 }
