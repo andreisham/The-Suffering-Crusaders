@@ -95,23 +95,24 @@ function countCrussaders(form) {
 function getWinner() {
     if(totalScore.innerHTML <= 0) {  
         let winner;
-        let max = Object.entries(playerScores).sort(function(a,b){ 
+        let sort = Object.entries(playerScores).sort(function(a,b){ 
             return +b[b.length-1] - a[a.length-1]
         })
         // Один победитель
-        if(max[0][1] > max[1][1]) {
-            winner = max[0][0].substring(0,7)
+        if(sort[0][1] > sort[1][1]) {
+            winner = sort[0][0].substring(0,7)
             getRelic(winner)
         // разрешение спора (два победителя)
-        } else if (max[0][1] === max[1][1] && max[1][1] > max[2][1]) {
-            let winnerOneName = localStorage.getItem(max[0][0].substring(0,7))
-            let winnerTwoName = localStorage.getItem(max[1][0].substring(0,7))
+        } else if (sort[0][1] === sort[1][1] && sort[1][1] > sort[2][1]) {
+            let winnerOneName = localStorage.getItem(sort[0][0].substring(0,7))
+            let winnerTwoName = localStorage.getItem(sort[1][0].substring(0,7))
             let winners = [winnerOneName, winnerTwoName]
             // запуск модалки
             showModal(winners)
         // разрешение спора (больше двух победителей)
         } else {
             let winners = []
+            max = findMax(sort)
             for (let i = 0; i < max.length; i++) {
                 if(localStorage.getItem(max[i][0].substring(0,7)) != null) {
                     winners.push(localStorage.getItem(max[i][0].substring(0,7))); 
@@ -122,11 +123,51 @@ function getWinner() {
         } 
     } else {
         // вылезающий монах
-        let notification = document.querySelector('.notification');
-        notification.classList.toggle('notification-active');
-        setTimeout(() => notification.classList.toggle('notification-active'), 2500);
+        notificate()
     }
 }
+function notificate(){
+    
+    
+    let notification = document.querySelector('.notification');
+    
+    if(notification.dataset.i < 1) {
+        notification.dataset.i++
+        console.log(notification.dataset.i)
+        notification.classList.toggle('notification-active');
+        setTimeout(() => notification.classList.toggle('notification-active'), 2500);
+    } else {
+        console.log('kolya')
+        notification.classList.toggle('notification-active');
+        notification.classList.toggle('notification-kolya')
+
+        console.log(document.querySelector('#notif-img').src)
+
+        let notifImg = document.querySelector('#notif-img').src
+        let notifText = document.querySelector('.notification-text').innerHTML
+        document.querySelector('#notif-img').src = '../img/kolya.webp';
+        
+        document.querySelector('.notification-text').innerHTML = 'Та хорош!'
+        setTimeout(() => notification.classList.toggle('notification-active'), 2500);
+        // возвращаем как было
+        document.querySelector('.notification-text').innerHTML = notifText;
+        document.querySelector('#notif-img').src = notifImg
+        notification.dataset.i = 0;
+    }
+    
+}
+// поиск максимумов из массива
+function findMax(arr) {
+    let max = []
+    let possibleMax = arr[0][1]
+    for (let i = 0; i < arr.length; i++) {
+        if(arr[i][1] == possibleMax) {
+            max.push(arr[i])
+        }
+    }
+    return max;
+}
+
 // раздача реликвий
 function getRelic(winner) {
     winner = winner + '_score'
