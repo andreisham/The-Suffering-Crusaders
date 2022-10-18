@@ -80,9 +80,10 @@ function countCrussaders(form) {
                 }
                 form.crusaders.value = 0;
             }
-            // обнуление очков святой земли при уходе в минуса
+            // обнуление очков святой земли при уходе в минуса и уведомление об окончании очков
             if (totalScore.innerHTML <= 0) {
                 totalScore.innerHTML = 0;
+                notificate("Святая земля<br>опустошена!", "../img/monah.png")
             } else if (totalScore.innerHTML > score){
                 totalScore.innerHTML = score;
             }
@@ -123,39 +124,54 @@ function getWinner() {
         } 
     } else {
         // вылезающий монах
-        notificate()
+        let text = 'Не дам! Святая<br>земля еще не<br>покорена'
+        let img = "../img/monah.png"
+        notificate(text, img)
     }
 }
-function notificate(){
+
+// создали див для вылезающих уведомлений
+let notification_div = document.createElement('div');
+notification_div.innerHTML = `<img id="notif-img" src="">
+                              <p class="notification-text"></p>`;
+
+function notificate(text, img){
+    let notification_container = document.querySelector('.notification_container');
     
-    
-    let notification = document.querySelector('.notification');
-    
-    if(notification.dataset.i < 1) {
-        notification.dataset.i++
-        console.log(notification.dataset.i)
-        notification.classList.toggle('notification-active');
-        setTimeout(() => notification.classList.toggle('notification-active'), 2500);
+    notification_container.append(notification_div)
+
+    if(notification_container.dataset.i < 3) {
+        notification_div.className = "notification";
+        let notification = document.querySelector('.notification');
+        document.querySelector('#notif-img').src = img;
+        setTimeout(() => {document.querySelector('.notification-text').innerHTML = text
+            notification_container.dataset.i++
+            notification.classList.toggle('notification-active');
+            }, 100);
+        setTimeout(() => notification.classList.toggle('notification-active'), 3000);
+        setTimeout(() => notification_div.remove(), 3300);
     } else {
-        console.log('kolya')
-        notification.classList.toggle('notification-active');
-        notification.classList.toggle('notification-kolya')
-
-        console.log(document.querySelector('#notif-img').src)
-
-        let notifImg = document.querySelector('#notif-img').src
-        let notifText = document.querySelector('.notification-text').innerHTML
-        document.querySelector('#notif-img').src = '../img/kolya.webp';
-        
-        document.querySelector('.notification-text').innerHTML = 'Та хорош!'
-        setTimeout(() => notification.classList.toggle('notification-active'), 2500);
-        // возвращаем как было
-        document.querySelector('.notification-text').innerHTML = notifText;
-        document.querySelector('#notif-img').src = notifImg
-        notification.dataset.i = 0;
+        kolya(notification_div)
+        notification_container.dataset.i = 0;
     }
-    
 }
+
+// вызов Коли
+function kolya(notification_div) {
+    notification_div.className = "notification-kolya";
+    notifText = document.querySelector('.notification-text')
+
+    notifText.classList.replace('notification-text', 'notification-text-kolya')
+    setTimeout(() => {notifText.innerHTML = 'Та хорош!'
+            document.querySelector('#notif-img').src = '../img/kolya.png';
+            notification_div.classList.toggle('notification-active-kolya');
+            }, 100);
+    setTimeout(() => notification_div.classList.toggle('notification-active-kolya'), 3000);
+    setTimeout(() => {notifText.classList.replace('notification-text-kolya', 'notification-text')
+            notification_div.remove()}
+            , 3300);
+}
+
 // поиск максимумов из массива
 function findMax(arr) {
     let max = []

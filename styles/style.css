@@ -242,6 +242,16 @@ body,html {
 .notification-active{
     bottom: -10px;
 }
+.notification-kolya{
+    position: fixed;
+    bottom: -500px;
+    right: 0px;
+    transition: bottom .3s linear;
+    z-index: 9999;
+}
+.notification-active-kolya{
+    bottom: -186px;
+}
 .notification-text{
     position: absolute;
     font-size: 11px;
@@ -249,10 +259,17 @@ body,html {
     color: #800000;
     left: 118px;
     bottom: 125px;
+    
 }
-.notification-kolya{
+.notification-text-kolya{
+    position: absolute;
+    font-size: 18px;
+    text-align: center;
+    color: #800000;
+    left: 302px;
+    bottom: 403px;
+}
 
-}
 /* Модальное окно (фон) */
 .modal {
     display: none; /* Скрыто по умолчанию */
